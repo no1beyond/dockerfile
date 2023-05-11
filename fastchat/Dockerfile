@@ -1,2 +1,2 @@
 from pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
-run pip install fschat
+run pip install fschat gdown plotly
