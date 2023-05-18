@@ -3,5 +3,5 @@ run pip install fschat
 # webui
 run pip install gdown plotly 
 # train
-run apt-get update && apt-get install -y git
+run apt-get update && apt-get install -y git g++
 run pip install einops flash_attn
