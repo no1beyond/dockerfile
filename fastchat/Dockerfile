@@ -4,4 +4,4 @@ run pip install fschat
 run pip install gdown plotly 
 # train
 run apt-get update && apt-get install -y git g++
-run pip install einops flash_attn
+run pip install einops flash_attn==1.0.2
