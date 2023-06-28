@@ -1,0 +1,21 @@
+FROM ubuntu:16.04
+# init
+RUN apt-get update && apt-get install -y wget
+# install py310
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
+RUN bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -b -p /opt/miniconda
+ENV PATH /opt/miniconda/bin:$PATH
+# install fschat
+RUN pip install fschat -i https://mirrors.aliyun.com/pypi/simple/
+# webui
+RUN pip install gdown plotly  -i https://mirrors.aliyun.com/pypi/simple/
+# train
+# install git
+RUN apt-get update && apt-get install -y git
+# install g++-9
+RUN apt-get install -y software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update && apt-get install -y g++-9
+RUN ln -sf /usr/bin/g++-9 /usr/bin/g++ && ln -sf /usr/bin/gcc-9 /usr/bin/gcc
+# install cuda
+RUN conda install -c nvidia cudatoolkit
+RUN conda install -c "nvidia/label/cuda-11.6.2" cuda-nvcc cuda-cudart-dev libcusparse-dev libcublas-dev libcusolver-dev
+RUN pip install einops flash_attn==1.0.2 -i https://mirrors.aliyun.com/pypi/simple/
