@@ -1,0 +1,6 @@
+from pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+run apt-get update && apt-get install -y git
+copy requirements.txt /opt
+run pip install -r /opt/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+run pip install open_clip_torch pytorch-lightning==1.7.7 torchmetrics==0.11.4 xformers clip gdown pydantic==1.10.11 -i https://mirrors.aliyun.com/pypi/simple/
+run DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y libgl1 libglib2.0-0
